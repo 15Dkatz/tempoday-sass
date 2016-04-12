@@ -5,9 +5,12 @@ myApp.controller('GameController', ['$scope', '$rootScope', 'Authentication', 's
 
     $scope.testText = "dg fg";
 
+    // simplify game and add a metronome
 
     //48 = whole note, 24 = half note, 12 = quarter note, 6 = eigth note, 3 = sixteenth note. 8-8-8 = quarter triplet.
-    var noteValues = [3, 6, 12, 18, 24, 36, 48];
+    // var noteValues = [3, 6, 12, 18, 24, 36, 48];
+    // easy mode
+    var noteValues = [12, 24, 48];
 
     $scope.globalLevel=1;
 
@@ -20,7 +23,6 @@ myApp.controller('GameController', ['$scope', '$rootScope', 'Authentication', 's
 
     var generateGameRhythm = function(level) {
         var gameRhythm = [];
-        // var limit = 192;
         if (level===1) {
             limit=72;
         } else if (level===2) {
@@ -52,18 +54,18 @@ myApp.controller('GameController', ['$scope', '$rootScope', 'Authentication', 's
             }
             var randNoteVal = noteValues[randIndex];
             
-            if (randNoteVal!=24) {
+            // if (randNoteVal!=24) {
                 gameRhythm.push(randNoteVal);
-            } else {
-                randChance = Math.random();
-                if (randChance>.33) {
-                    gameRhythm.push(randNoteVal)
-                } else {
-                    for (var i=0; i<3; i++) {
-                        gameRhythm.push(8);
-                    }
-                }
-            }
+            // } else {
+            //     randChance = Math.random();
+            //     if (randChance>.33) {
+            //         gameRhythm.push(randNoteVal)
+            //     } else {
+            //         for (var i=0; i<3; i++) {
+            //             gameRhythm.push(8);
+            //         }
+            //     }
+            // }
             total+=randNoteVal;
             limit -= randNoteVal;
 
@@ -96,7 +98,7 @@ myApp.controller('GameController', ['$scope', '$rootScope', 'Authentication', 's
         userRhythm.push($scope.time);
         clearInterval(timeItv);
         $scope.time=0;
-        if (userRhythm.length == gameRhythm.length) {
+        if (userRhythm.length == gameRhythm.length || userRhythm.length>gameRhythm.length) {
             console.log("compare", gameRhythm, "to", userRhythm)
             console.log("run the compare function!");
             var accuracy = (compareRhythms(gameRhythm, userRhythm)*100).toFixed(2);
@@ -213,14 +215,11 @@ myApp.controller('GameController', ['$scope', '$rootScope', 'Authentication', 's
     var previous=undefined;
     
     $scope.generateGRhythm = function() {
-        //debugging
-        // console.log(currentPage, "CP");
         gameRhythm = generateGameRhythm($scope.globalLevel);
         $scope.gameRhythmDisplay=rhythmDisplay(gameRhythm); 
         console.log(gameRhythm);
 
         var randBIndex = Math.floor(Math.random()*randBackground.length);
-        // $("#page2").addClass(randBackground[randBIndex]);
         previous = randBackground[randBIndex];
 
     }
