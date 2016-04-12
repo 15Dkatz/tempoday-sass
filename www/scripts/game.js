@@ -23,53 +23,97 @@ myApp.controller('GameController', ['$scope', '$rootScope', 'Authentication', 's
 
     var generateGameRhythm = function(level) {
         var gameRhythm = [];
+        // Level 1 will only select quarter notes, half notes, or whole notes
         if (level===1) {
             limit=72;
+            noteValues = [12, 24, 48];
+            while (limit>0) {
+                var randIndex = Math.floor(Math.random()*3);
+                if (limit<48) {
+                    randIndex = Math.floor(Math.random()*2);
+                }
+                if (limit<24) {
+                    randIndex = Math.floor(Math.random()*1);
+                }
+                if (limit<12) {
+                    randIndex = Math.floor(Math.random());
+                }
+                var randNoteVal = noteValues[randIndex];
+                
+                gameRhythm.push(randNoteVal);
+                total+=randNoteVal;
+                limit-=randNoteVal;
+            }
+        // Level 2 will only select eigth notes, quarter notes, half notes, dotted half notes, or whole notes 
         } else if (level===2) {
             limit = 96;
+            noteValues = [6, 12, 24, 36, 48];
+            while (limit>0) {
+                var randIndex = Math.floor(Math.random()*5);
+                if (limit<48) {
+                    randIndex = Math.floor(Math.random()*4);
+                }
+                if (limit<36) {
+                    randIndex = Math.floor(Math.random()*3);
+                }
+                if (limit<24) {
+                    randIndex = Math.floor(Math.random()*2);
+                }
+                if (limit<12) {
+                    randIndex = Math.floor(Math.random()*1);
+                }
+                if (limit<6) {
+                    randIndex = Math.floor(Math.random());
+                }
+                var randNoteVal = noteValues[randIndex];
+                gameRhythm.push(randNoteVal);
+                total+=randNoteVal;
+                limit-=randNoteVal;
+            }
+        // Level 2 will only select from every possible option
         } else {
             limit = 192;
+            while (limit>0) {
+                var randIndex = Math.floor(Math.random()*6);
+                if (limit<48) {
+                    randIndex = Math.floor(Math.random()*5);
+                }
+                if (limit<36) {
+                    randIndex = Math.floor(Math.random()*4);
+                }
+                if (limit<24) {
+                    randIndex = Math.floor(Math.random()*3);
+                }
+                if (limit<18) {
+                    randIndex = Math.floor(Math.random()*2);
+                }
+                if (limit<12) {
+                    randIndex = Math.floor(Math.random()*1);
+                }
+                if (limit<6) {
+                    randIndex = Math.floor(Math.random());
+                }
+                var randNoteVal = noteValues[randIndex];
+                
+                if (randNoteVal!=24) {
+                    gameRhythm.push(randNoteVal);
+                } else {
+                    randChance = Math.random();
+                    if (randChance>.33) {
+                        gameRhythm.push(randNoteVal)
+                    } else {
+                        for (var i=0; i<3; i++) {
+                            gameRhythm.push(8);
+                        }
+                    }
+                }
+                total+=randNoteVal;
+                limit-=randNoteVal;
+            }
         }
         var randIndex;
         var total=0;
-        while (limit>0) {
-            var randIndex = Math.floor(Math.random()*6);
-            if (limit<48) {
-                randIndex = Math.floor(Math.random()*5);
-            }
-            if (limit<36) {
-                randIndex = Math.floor(Math.random()*4);
-            }
-            if (limit<24) {
-                randIndex = Math.floor(Math.random()*3);
-            }
-            if (limit<18) {
-                randIndex = Math.floor(Math.random()*2);
-            }
-            if (limit<12) {
-                randIndex = Math.floor(Math.random()*1);
-            }
-            if (limit<6) {
-                randIndex = Math.floor(Math.random());
-            }
-            var randNoteVal = noteValues[randIndex];
-            
-            // if (randNoteVal!=24) {
-                gameRhythm.push(randNoteVal);
-            // } else {
-            //     randChance = Math.random();
-            //     if (randChance>.33) {
-            //         gameRhythm.push(randNoteVal)
-            //     } else {
-            //         for (var i=0; i<3; i++) {
-            //             gameRhythm.push(8);
-            //         }
-            //     }
-            // }
-            total+=randNoteVal;
-            limit -= randNoteVal;
 
-        }
         console.log(total);
         return gameRhythm;
     }
@@ -221,7 +265,8 @@ myApp.controller('GameController', ['$scope', '$rootScope', 'Authentication', 's
     var randBackground = ["green", "orange", "deep-orange", "light-blue", "teal", "blue", "red", "pink"];
     var previous=undefined;
     
-    $scope.generateGRhythm = function() {
+    $scope.generateGRhythm = function(level) {
+        $scope.globalLevel = level;
         gameRhythm = generateGameRhythm($scope.globalLevel);
         $scope.gameRhythmDisplay=rhythmDisplay(gameRhythm); 
         console.log(gameRhythm);
@@ -262,4 +307,6 @@ myApp.controller('GameController', ['$scope', '$rootScope', 'Authentication', 's
 }]); // Controller
 
 
-// put the build and the login button in the bar.
+// TODO:
+// add a metronome
+// add an easy level
