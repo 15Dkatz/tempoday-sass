@@ -3,6 +3,8 @@ myApp.controller('GameController', ['$scope', '$rootScope', 'Authentication', 's
     var ref = new Firebase(FIREBASE_URL);
     var auth = $firebaseAuth(ref);
 
+    $scope.testText = "dg fg";
+
     // use a combination of on-tap to start a time
     // and on-release to keep track of a time finished
 

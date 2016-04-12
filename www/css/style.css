@@ -1,1 +1,13 @@
 /* Empty. Add your own CSS if you like */
+@font-face {
+	font-family: "Rhyth";
+	src: url("../fonts/Rhyth.otf") format("opentype");
+}
+
+.testText {
+	font-family: "Rhyth";
+	width: 80%;
+	margin-left: 10%;
+	font-size: 4.5rem;
+	letter-spacing: 0.1rem;
+}
