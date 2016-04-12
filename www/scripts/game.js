@@ -8,9 +8,9 @@ myApp.controller('GameController', ['$scope', '$rootScope', 'Authentication', 's
     // simplify game and add a metronome
 
     //48 = whole note, 24 = half note, 12 = quarter note, 6 = eigth note, 3 = sixteenth note. 8-8-8 = quarter triplet.
-    // var noteValues = [3, 6, 12, 18, 24, 36, 48];
+    var noteValues = [3, 6, 12, 18, 24, 36, 48];
     // easy mode
-    var noteValues = [12, 24, 48];
+    // var noteValues = [12, 24, 48];
 
     $scope.globalLevel=1;
 
@@ -102,8 +102,13 @@ myApp.controller('GameController', ['$scope', '$rootScope', 'Authentication', 's
             console.log("compare", gameRhythm, "to", userRhythm)
             console.log("run the compare function!");
             var accuracy = (compareRhythms(gameRhythm, userRhythm)*100).toFixed(2);
-            console.log("accuracy", accuracy);
+            
+            if (accuracy == NaN) {
+                console.log("setting to 0.")
+                $scope.accuracy = 0.1;
+            }
             $scope.accuracy=accuracy;
+            console.log("accuracy", accuracy);
             userRhythm = [];
         }
 
@@ -126,8 +131,10 @@ myApp.controller('GameController', ['$scope', '$rootScope', 'Authentication', 's
 
     }
 
+    // if accuracy = NAN, then set to 0.
+
     var rhythmDisplay = function(rhythm) {
-        var rhythmDisplay = "$4 \u00A0";
+        var rhythmDisplay = "c \u00A0";
         for (var i=0; i<rhythm.length; i++) {
             var letter;
             if (rhythm[i]===8) {
