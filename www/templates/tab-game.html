@@ -1,8 +1,14 @@
 <ion-view view-title="Game">
   <ion-content class="">
-    Page to control the rhythm game. Use game.js && rhythm.js.
+    <!-- Page to control the rhythm game. Use game.js && rhythm.js. -->
+    <br>
 
-    <div class="testText">{{testText}}</div>
+    <div>Accuracy: {{accuracy}}%</div>
+    <button class="button button-block" ng-click="generateGRhythm()">Generate Rhythm</button>
+    <div class="rhythText">{{gameRhythmDisplay}}</div>
+
+    <!-- testing -->
+    <div class="drum" on-touch="startTime()" on-release="stopTime()">Tap Me!</div>
     <!-- <div class="">
       <div class="bar bar-dark">
         <h1 class="title">{{currentExercise.exercise}}</h1>

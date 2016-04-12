@@ -4,10 +4,17 @@
 	src: url("../fonts/Rhyth.otf") format("opentype");
 }
 
-.testText {
+.rhythText {
 	font-family: "Rhyth";
 	width: 80%;
 	margin-left: 10%;
-	font-size: 4.5rem;
+	font-size: 2rem;
 	letter-spacing: 0.1rem;
+}
+
+.drum {
+	width: 80%;
+	height: 50px;
+	border-radius: 50%;
+	background: #fff;
 }
