@@ -132,16 +132,41 @@ myApp.controller('GameController', ['$scope', '$rootScope', 'Authentication', 's
         $scope.time+=1;
     }
 
-    //new wad sound
-    // var sineSound = new Wad({source: 'sine'})
+    $scope.popColor = "light";
+    var randPopColor = ["green", "orange", "deep-orange", "light-blue", "teal", "blue", "red", "pink"];
 
-
-    $scope.startTime = function() {
+    // event argument to register x and y positioning
+    $scope.startTime = function(event) {
         timeItv = setInterval(incrementTime, 10);
+
+        // addClass
+        // addClass("drumTap", "popCircle");
+        // pick from a list of random colors
+        $scope.popColor = "balanced";
+
+        // console.log("x", event.offsetX, "y", event.pageY);
     }
 
+    $scope.drumX = 0;
+    $scope.drumY = 0;
+
+    $scope.findPos = function(event) {
+        console.log("x", event.offsetX, "y", event.pageY);  
+        $scope.drumX = event.offsetX;
+        $scope.drumY = event.offsetY;
+    }
+
+
     $scope.stopTime = function() {
+        // $scope.$apply(function(){
+        var randPCndex = Math.floor(Math.random()*randPopColor.length);
+        $scope.popColor = randPopColor[randPCndex];    
+        // })
+        
         console.log(userRhythm.length, "UR l")
+        if ($scope.time === 0) {
+            $scope.time = 1;
+        }
         userRhythm.push($scope.time);
         clearInterval(timeItv);
         $scope.time=0;
@@ -158,6 +183,9 @@ myApp.controller('GameController', ['$scope', '$rootScope', 'Authentication', 's
             console.log("accuracy", accuracy);
             userRhythm = [];
         }
+
+        // removeClass
+        
 
     }
 
@@ -266,8 +294,8 @@ myApp.controller('GameController', ['$scope', '$rootScope', 'Authentication', 's
         return rhythmDisplay;
     }
 
-    var randBackground = ["green", "orange", "deep-orange", "light-blue", "teal", "blue", "red", "pink"];
-    var previous=undefined;
+    
+    // var previous=undefined;
     
     $scope.generateGRhythm = function() {
         // $scope.globalLevel = level;
@@ -277,7 +305,7 @@ myApp.controller('GameController', ['$scope', '$rootScope', 'Authentication', 's
         console.log(gameRhythm);
 
         var randBIndex = Math.floor(Math.random()*randBackground.length);
-        previous = randBackground[randBIndex];
+        // previous = randBackground[randBIndex];
 
     }
 
@@ -288,6 +316,9 @@ myApp.controller('GameController', ['$scope', '$rootScope', 'Authentication', 's
 
     var compareRhythms = function(rhythm1, rhythm2) {
         // check if accurate
+        // round up userRhythms that are taps for quarter notes.
+
+
         var rhythm1Divisor = rhythm1[0];
         var rhythm1total = 0;
         for (var r1=0; r1<rhythm1.length; r1++) {
@@ -315,3 +346,5 @@ myApp.controller('GameController', ['$scope', '$rootScope', 'Authentication', 's
 // TODO:
 // add a metronome
 // add an easy level
+
+// prevent NaN from appearing on the screen!
