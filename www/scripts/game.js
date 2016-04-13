@@ -142,16 +142,17 @@ myApp.controller('GameController', ['$scope', '$rootScope', 'Authentication', 's
         // addClass
         // addClass("drumTap", "popCircle");
         // pick from a list of random colors
-        $scope.popColor = "balanced";
+        var randPCndex = Math.floor(Math.random()*randPopColor.length);
+        $scope.popColor = randPopColor[randPCndex] + " popColor";  
 
-        // console.log("x", event.offsetX, "y", event.pageY);
+        console.log("x", event.offsetX, "y", event.pageY);
     }
 
     $scope.drumX = 0;
     $scope.drumY = 0;
 
     $scope.findPos = function(event) {
-        console.log("x", event.offsetX, "y", event.pageY);  
+        // console.log("x", event.offsetX, "y", event.pageY);  
         $scope.drumX = event.offsetX;
         $scope.drumY = event.offsetY;
     }
@@ -159,8 +160,8 @@ myApp.controller('GameController', ['$scope', '$rootScope', 'Authentication', 's
 
     $scope.stopTime = function() {
         // $scope.$apply(function(){
-        var randPCndex = Math.floor(Math.random()*randPopColor.length);
-        $scope.popColor = randPopColor[randPCndex];    
+        // var randPCndex = Math.floor(Math.random()*randPopColor.length);
+        $scope.popColor = "light";    
         // })
         
         console.log(userRhythm.length, "UR l")
@@ -325,10 +326,16 @@ myApp.controller('GameController', ['$scope', '$rootScope', 'Authentication', 's
             rhythm1total+=(rhythm1[r1]/rhythm1Divisor);
         }
 
+        // userRhythm
         var rhythm2Divisor = rhythm2[0];
         var rhythm2total = 0;
         for (var r2=0; r2<rhythm2.length; r2++) {
-            rhythm2total+=(rhythm2[r2]/rhythm2Divisor);
+            if (rhythm2[r2]!=1) {
+                rhythm2total+=(rhythm2[r2]/rhythm2Divisor);    
+            } else {
+                rhythm2total+=0.95;
+            }
+            
         }
 
         if (rhythm1total/rhythm2total>0&&rhythm1total/rhythm2total<1) {

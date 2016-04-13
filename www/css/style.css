@@ -35,6 +35,7 @@
 	/*background: #fff;*/
 /*	left: 50px;
 	top: 50px;*/
+	border-radius: 50%;
 
 }
 
@@ -47,6 +48,8 @@
 
 .light {
 	background: #fff;
+	width: 1px;
+	height: 1px;
 }
 
 .green {
