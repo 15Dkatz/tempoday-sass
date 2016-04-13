@@ -179,6 +179,7 @@ myApp.controller('GameController', ['$scope', '$rootScope', 'Authentication', 's
 
     var rhythmDisplay = function(rhythm) {
         var rhythmDisplay = "c \u00A0";
+        var rhythmDisplay = "";
         for (var i=0; i<rhythm.length; i++) {
             var letter;
             if (rhythm[i]===8) {
@@ -258,7 +259,7 @@ myApp.controller('GameController', ['$scope', '$rootScope', 'Authentication', 's
                     break;  
             }
         }
-        console.log(rhythmDisplay, "rd");
+        console.log(rhythmDisplay);
         return rhythmDisplay;
     }
 

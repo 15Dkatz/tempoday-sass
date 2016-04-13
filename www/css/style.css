@@ -8,13 +8,21 @@
 	font-family: "Rhyth";
 	width: 80%;
 	margin-left: 10%;
-	font-size: 2rem;
+	font-size: 1.9rem;
 	letter-spacing: 0.1rem;
+	line-height: 2.7rem;
+	text-align: center;
 }
 
 .drum {
-	width: 80%;
-	height: 50px;
-	border-radius: 50%;
+	width: 100%;
+	height: 100vh;
+	text-align: center;
 	background: #fff;
 }
+
+.container {
+	width: 80%;
+	margin-left: 10%;
+}
+
