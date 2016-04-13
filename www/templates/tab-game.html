@@ -44,13 +44,13 @@
     </div>
 
     <div class="drum" on-touch="startTime($event)" ng-click="findPos($event)" on-release="stopTime()">Start tapping the Rhythm in the space below
-      <div class="drumTap {{popColor}} left:{{drumX}}px top:{{drumY}}px"></div>
+      <div class="drumTap {{popColor}} {{pulse}}"></div>
       <style>
         /*p    {color:green;}*/
 
         .drumTap {
-          left: {{drumX-25}}px;
-          top: {{drumY-25}}px;
+          left: {{drumX-37.5}}px;
+          top: {{drumY-37.5}}px;
           /*top: {{drumY}};*/
         }
     </style>

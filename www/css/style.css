@@ -46,6 +46,39 @@
 	height: 50px;
 }
 
+.pulse {
+	width: 75px;
+	height: 75px;
+	border-radius: 100%;
+	border-style: solid;
+	border-width: 2px;
+	border-color: #ffffff;
+	background-color: #eeeeee;
+	-webkit-animation: pulsate 0.67s ease-out;
+	   /*-webkit-animation-iteration-count: infinite;*/
+	/*opacity: 0.5;*/
+	-webkit-filter: opacity(.4);
+  	filter: opacity(.4); 
+}
+
+@-webkit-keyframes pulsate {
+	0% {
+        -webkit-transform: scale(0.1, 0.1);
+		-webkit-filter: opacity(.1);
+  		filter: opacity(.1); 
+	}
+	50% {
+		-webkit-filter: opacity(.2);
+  		filter: opacity(.2); 
+	}
+	100% {
+	/* -webkit-transform: scale(1, 1); */
+		-webkit-filter: opacity(.4);
+  		filter: opacity(.4); 
+	}
+}
+
+
 .light {
 	background: #fff;
 	width: 1px;

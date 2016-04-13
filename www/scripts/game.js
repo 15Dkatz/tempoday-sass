@@ -135,26 +135,33 @@ myApp.controller('GameController', ['$scope', '$rootScope', 'Authentication', 's
     $scope.popColor = "light";
     var randPopColor = ["green", "orange", "deep-orange", "light-blue", "teal", "blue", "red", "pink"];
 
+    $scope.pulse = "";
+
     // event argument to register x and y positioning
     $scope.startTime = function(event) {
         timeItv = setInterval(incrementTime, 10);
-
-        // addClass
-        // addClass("drumTap", "popCircle");
-        // pick from a list of random colors
         var randPCndex = Math.floor(Math.random()*randPopColor.length);
         $scope.popColor = randPopColor[randPCndex] + " popColor";  
-
         console.log("x", event.offsetX, "y", event.pageY);
+
+
+        $scope.pulse = "pulse";
     }
 
     $scope.drumX = 0;
     $scope.drumY = 0;
 
     $scope.findPos = function(event) {
-        // console.log("x", event.offsetX, "y", event.pageY);  
-        $scope.drumX = event.offsetX;
-        $scope.drumY = event.offsetY;
+        // console.log("x", event.offsetX, "y", event.pageY);
+        if (event.offsetX!=0) {
+            $scope.drumX = event.offsetX;
+        }
+
+        // $scope.drumX = event.offsetX;
+        if (event.offsetY!=0) {
+            $scope.drumY = event.offsetY;    
+        }
+        
     }
 
 
@@ -163,6 +170,7 @@ myApp.controller('GameController', ['$scope', '$rootScope', 'Authentication', 's
         // var randPCndex = Math.floor(Math.random()*randPopColor.length);
         $scope.popColor = "light";    
         // })
+        $scope.pulse = "";
         
         console.log(userRhythm.length, "UR l")
         if ($scope.time === 0) {
