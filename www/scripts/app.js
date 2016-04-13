@@ -82,13 +82,6 @@ myApp.config(function($stateProvider, $urlRouterProvider) {
 
 // Todo:
 
-// change to black-and-orange, giants color-way theme for more intensity
+// add instructions and a gif image to demonstrate playing of game in settings page.
+// finish tab-settings.html, which should probably be renamed to tab-instructions.html
 
-// <!-- fill background of progressBar in tab-workout.html with grey or a picture -->
-
-// add latency for offline capability to maintain exercises for user when they lose connection
-// <!-- CREATE CUSTOM LIST --> in build.html
-// 
-        // <!-- open sidenav bar -->
-
-        // <!-- CREATE CUSTOM Category -->
