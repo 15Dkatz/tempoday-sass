@@ -148,6 +148,11 @@ myApp.controller('GameController', ['$scope', '$rootScope', 'Authentication', 's
         $scope.pulse = "pulse";
     }
 
+    $scope.pulsateCorners = function() {
+        $scope.pulse = "pulse";
+    } 
+
+
     $scope.drumX = 0;
     $scope.drumY = 0;
 

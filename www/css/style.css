@@ -46,6 +46,38 @@
 	height: 50px;
 }
 
+
+.cornerCircle {
+	position: absolute;
+	width: 350px;
+	height: 350px;
+	background: #000;
+	border-radius: 50%;
+	top: 50%;
+}
+
+#cornerCircle1 {
+	left: 50%;
+	background: rgb(255, 0, 0);
+}
+
+#cornerCircle2 {
+	left: -50%;
+	background: rgb(0, 255, 0);
+}
+
+#cornerCircle3 {
+	/*top: 55vh;
+	left: 100%;
+	background: rgb(0, 255, 0);*/
+}
+
+#cornerCircle4 {
+/*	top: -175px;
+	left: -175px;
+	background: rgb(0, 0, 255);*/
+}
+
 .pulse {
 	width: 75px;
 	height: 75px;

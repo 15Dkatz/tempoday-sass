@@ -45,6 +45,16 @@
 
     <div class="drum" on-touch="startTime($event)" ng-click="findPos($event)" on-release="stopTime()">Start tapping the Rhythm in the space below
       <div class="drumTap {{popColor}} {{pulse}}"></div>
+      
+      <!-- place four circles in each corner -->
+      <!-- pass in the div ID or a model to a pulsation method that pulsates the div element based on touch -->
+      <div class="cornerCircle  {{pulse}}" id="cornerCircle1" ng-touch="pulsateCorner(cornerCircle1)" ng-model="cornerCircle1"></div>
+      <div class="cornerCircle  {{pulse}}" id="cornerCircle2" ng-touch="pulsateCorner(cornerCircle1)" ng-model="cornerCircle2"></div>
+      <!-- <div class="cornerCircle" id="cornerCircle3"></div> -->
+      <!-- <div class="cornerCircle" id="cornerCircle4"></div> -->
+
+
+
       <style>
         /*p    {color:green;}*/
 
@@ -53,7 +63,7 @@
           top: {{drumY-37.5}}px;
           /*top: {{drumY}};*/
         }
-    </style>
+      </style>
     </div>
     
     
