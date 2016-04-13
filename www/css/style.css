@@ -51,36 +51,32 @@
 	position: absolute;
 	width: 350px;
 	height: 350px;
-	background: #000;
+	background: #fff;
 	border-radius: 50%;
 	top: 50%;
 }
 
+.animated {
+	background: #F8F8F8;
+}
+
 #cornerCircle1 {
 	left: 50%;
-	background: rgb(255, 0, 0);
+	/*background: rgb(255, 0, 0);*/
+	/*background: #F8F8F8;*/
 }
 
 #cornerCircle2 {
-	left: -50%;
-	background: rgb(0, 255, 0);
+	left: -58%;
+	/*background: rgb(0, 255, 0);*/
+	/*background: #F8F8F8;*/
 }
 
-#cornerCircle3 {
-	/*top: 55vh;
-	left: 100%;
-	background: rgb(0, 255, 0);*/
-}
 
-#cornerCircle4 {
-/*	top: -175px;
-	left: -175px;
-	background: rgb(0, 0, 255);*/
-}
 
 .pulse {
-	width: 75px;
-	height: 75px;
+	width: 350px;
+	height: 350px;
 	border-radius: 100%;
 	border-style: solid;
 	border-width: 2px;
@@ -91,6 +87,11 @@
 	/*opacity: 0.5;*/
 	-webkit-filter: opacity(.4);
   	filter: opacity(.4); 
+}
+
+.pulseTouch {
+	width: 75px;
+	height: 75px;
 }
 
 @-webkit-keyframes pulsate {

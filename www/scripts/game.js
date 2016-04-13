@@ -137,19 +137,34 @@ myApp.controller('GameController', ['$scope', '$rootScope', 'Authentication', 's
 
     $scope.pulse = "";
 
+    var pulseTimer;
     // event argument to register x and y positioning
     $scope.startTime = function(event) {
         timeItv = setInterval(incrementTime, 10);
+
+        $scope.pulse = "pulse";
+
+        // pulseTimer = setInterval(function() {
+        //     $scope.pulse = "";
+        //     console.log("removing pulse");
+        // }, 500);
+
+
         var randPCndex = Math.floor(Math.random()*randPopColor.length);
         $scope.popColor = randPopColor[randPCndex] + " popColor";  
         console.log("x", event.offsetX, "y", event.pageY);
 
 
-        $scope.pulse = "pulse";
+        
     }
 
-    $scope.pulsateCorners = function() {
+    $scope.animated = "";
+
+    $scope.pulsateCorners = function(circleId) {
         $scope.pulse = "pulse";
+        $scope.animated = "animated";
+
+        // figure out how to isolate the circleId so that only that Id animates depending on which side you click on.
     } 
 
 
@@ -166,16 +181,18 @@ myApp.controller('GameController', ['$scope', '$rootScope', 'Authentication', 's
         if (event.offsetY!=0) {
             $scope.drumY = event.offsetY;    
         }
-        
     }
 
+    
 
     $scope.stopTime = function() {
-        // $scope.$apply(function(){
-        // var randPCndex = Math.floor(Math.random()*randPopColor.length);
         $scope.popColor = "light";    
-        // })
-        $scope.pulse = "";
+        // $scope.pulse = "";
+
+        // clearInterval(pulseTimer);
+        setTimeout(function() {
+            $scope.pulse = "";
+        }, 50);
         
         console.log(userRhythm.length, "UR l")
         if ($scope.time === 0) {
@@ -199,6 +216,8 @@ myApp.controller('GameController', ['$scope', '$rootScope', 'Authentication', 's
         }
 
         // removeClass
+        $scope.animated = "";
+        
         
 
     }
