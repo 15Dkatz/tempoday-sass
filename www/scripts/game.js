@@ -15,14 +15,16 @@ myApp.controller('GameController', ['$scope', '$rootScope', 'Authentication', 's
     $scope.globalLevel=1;
 
     $scope.changeLevel = function() {
-        if ($scope.globalLevel===3) {
+        if ($scope.globalLevel>2) {
             $scope.globalLevel=0
         }
         $scope.globalLevel++;
+        console.log("globalLevel", $scope.globalLevel);
     }
 
     var generateGameRhythm = function(level) {
         var gameRhythm = [];
+        console.log("globalLevel", $scope.globalLevel);
         // Level 1 will only select quarter notes, half notes, or whole notes
         if (level===1) {
             limit=72;
@@ -72,6 +74,7 @@ myApp.controller('GameController', ['$scope', '$rootScope', 'Authentication', 's
             }
         // Level 2 will only select from every possible option
         } else {
+            noteValues = [3, 6, 12, 18, 24, 36, 48];
             limit = 192;
             while (limit>0) {
                 var randIndex = Math.floor(Math.random()*6);
@@ -266,8 +269,9 @@ myApp.controller('GameController', ['$scope', '$rootScope', 'Authentication', 's
     var randBackground = ["green", "orange", "deep-orange", "light-blue", "teal", "blue", "red", "pink"];
     var previous=undefined;
     
-    $scope.generateGRhythm = function(level) {
-        $scope.globalLevel = level;
+    $scope.generateGRhythm = function() {
+        // $scope.globalLevel = level;
+        userRhythm.length = 0;
         gameRhythm = generateGameRhythm($scope.globalLevel);
         $scope.gameRhythmDisplay=rhythmDisplay(gameRhythm); 
         console.log(gameRhythm);

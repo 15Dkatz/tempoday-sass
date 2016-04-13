@@ -11,7 +11,7 @@
     <br>
     <div class="rhythText">{{gameRhythmDisplay}}</div>
 
-    <div class="container">
+<!--     <div class="container">
       <button class="button button-block" ng-click="generateGRhythm(1)">Generate Rhythm</button>
     </div>
 
@@ -28,6 +28,19 @@
         </select>
       </label>
 
+    </div> -->
+    <div class="list">
+      <div class="row topButtons">
+        <div class="col col-50">
+          <div class="container">
+            <button class="button button-block" ng-click="generateGRhythm({{globalLevel}})">New</button>
+          </div>
+        </div>
+        <div class="col col-50">
+        <div class="container">
+          <button class="button button-block" ng-click="changeLevel()">Level: {{globalLevel}}</button>
+        </div>
+      </div>
     </div>
 
     <div class="drum" on-touch="startTime()" on-release="stopTime()">Start tapping the Rhythm in the space below</div>
