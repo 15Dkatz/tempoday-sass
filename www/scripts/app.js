@@ -31,12 +31,12 @@ myApp.config(function($stateProvider, $urlRouterProvider) {
     // controller: 'ApplicationController'
   })
 
-  .state('tab.settings', {
-    url: '/settings',
+  .state('tab.instructions', {
+    url: '/instructions',
     views: {
-      'tab-settings': {
-        templateUrl: 'templates/tab-settings.html',
-        controller: 'SettingsController'
+      'tab-instructions': {
+        templateUrl: 'templates/tab-instructions.html',
+        controller: 'InstructionsController'
       }
     }
   })
@@ -82,6 +82,9 @@ myApp.config(function($stateProvider, $urlRouterProvider) {
 
 // Todo:
 
-// add instructions and a gif image to demonstrate playing of game in settings page.
-// finish tab-settings.html, which should probably be renamed to tab-instructions.html
+// add instructions and a gif image to demonstrate playing of game in instructions page.
+// finish tab-instructions.html, which should probably be renamed to tab-instructions.html
+
+// fix account page
+// add gif animation of gameplay
 

@@ -1,4 +1,4 @@
-myApp.controller('SettingsController', ['$scope', '$rootScope', 'Authentication', 'sharedExercises', '$window', '$ionicSideMenuDelegate', '$ionicPopover',
+myApp.controller('InstructionsController', ['$scope', '$rootScope', 'Authentication', 'sharedExercises', '$window', '$ionicSideMenuDelegate', '$ionicPopover',
   function($scope, $rootScope, Authentication, sharedExercises, $window, $ionicSideMenuDelegate, $ionicPopover) {
     
     $scope.numOfExercises = 10;

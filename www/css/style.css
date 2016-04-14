@@ -65,23 +65,24 @@
 }
 
 #cornerCircle2 {
-	left: -12%;
+	left: -29%;
 	/*background: rgb(0, 255, 0);*/
 	/*background: #F8F8F8;*/
 }
 
 /*change width and height in one go*/
 .cornerCircle, .pulse {
-	width: 200px;
-	height: 200px;
+	width: 300px;
+	height: 300px;
 }
 
 .pulse {
 	border-radius: 100%;
 	border-style: solid;
 	border-width: 2px;
-	border-color: #ffffff;
-	background-color: #eeeeee;
+	border-color: #fff;
+	background-color: #eee;
+	z-index: 2;
 	-webkit-animation: pulsate 1s ease-out;
 	   /*-webkit-animation-iteration-count: infinite;*/
 	/*opacity: 0.5;*/
@@ -148,6 +149,16 @@
 
 .pink {
 	background-color: #d81b60;
+}
+
+.title {
+	text-align: center;
+	font-size: 1.25rem;
+}
+
+.instructions {
+	text-align: center;
+	font-size: 1rem;
 }
 
 
