@@ -341,25 +341,18 @@ myApp.controller('GameController', ['$scope', '$rootScope', 'Authentication', 's
     
     $scope.generateGRhythm = function() {
         // $scope.globalLevel = level;
-        userRhythm.length = 0;
+        userRhythm = [];
         gameRhythm = generateGameRhythm($scope.globalLevel);
         $scope.gameRhythmDisplay=rhythmDisplay(gameRhythm); 
         console.log(gameRhythm);
 
-        var randBIndex = Math.floor(Math.random()*randBackground.length);
+        // var randBIndex = Math.floor(Math.random()*randBackground.length);
         // previous = randBackground[randBIndex];
 
     }
 
-    $scope.tryAgain = function() {
-        userRhythm=[];
-        page3topage2();
-    }
 
     var compareRhythms = function(rhythm1, rhythm2) {
-        // check if accurate
-        // round up userRhythms that are taps for quarter notes.
-
 
         var rhythm1Divisor = rhythm1[0];
         var rhythm1total = 0;
@@ -396,3 +389,14 @@ myApp.controller('GameController', ['$scope', '$rootScope', 'Authentication', 's
 // add an easy level
 
 // prevent NaN from appearing on the screen!
+
+// CONSIDER
+// better algorithm?
+// develop a new algorithm that tracks the length of time that the user taps on the screen
+// as the user taps on the screen, you keep track of their taps and releases
+// these taps and releases get measured over a timeline
+// i.e.
+// hold--------release hold-release hold-release
+// looks like a half note, quarter note, quarter note.
+// you build an array of numbers that resemble these holds and releases.
+// you then compare the array to the game array

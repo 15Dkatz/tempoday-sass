@@ -59,21 +59,22 @@
 }
 
 #cornerCircle1 {
-	left: 50%;
+	right: -50%;
 	/*background: rgb(255, 0, 0);*/
 	/*background: #F8F8F8;*/
 }
 
 #cornerCircle2 {
-	left: -29%;
+	left: -50%;
 	/*background: rgb(0, 255, 0);*/
 	/*background: #F8F8F8;*/
 }
 
 /*change width and height in one go*/
+/*Can I set the width and height to a percentage? Perhaps vh and vw in order to dynamically resize the pulsating circles?*/
 .cornerCircle, .pulse {
-	width: 300px;
-	height: 300px;
+	width: 375px;
+	height: 375px;
 }
 
 .pulse {
@@ -83,9 +84,8 @@
 	border-color: #fff;
 	background-color: #eee;
 	z-index: 2;
-	-webkit-animation: pulsate 1s ease-out;
-	   /*-webkit-animation-iteration-count: infinite;*/
-	/*opacity: 0.5;*/
+	-webkit-animation: pulsate 0.67s ease-out;
+    -webkit-animation-iteration-count: 4;
 	-webkit-filter: opacity(.4);
   	filter: opacity(.4); 
 }
@@ -163,3 +163,17 @@
 
 
 /*darken the pulsate as the seconds pass!*/
+
+.list .item.item-accordion {
+	line-height: 38px;
+	padding-top: 0;
+	padding-bottom: 0;
+	transition: 0.09s all linear;
+}
+.list .item.item-accordion.ng-hide {
+	line-height: 0px;
+}
+.list .item.item-accordion.ng-hide-add,
+.list .item.item-accordion.ng-hide-remove {
+	display: block !important;
+}
